@@ -1,0 +1,6 @@
+&parameterList
+  nEff=2,
+  columnDat=6,5,
+  effectType=A,R2,
+  setZero=1,0
+/

@@ -1,0 +1,21 @@
+&input
+  snpfile='Data/X10Met.txt',
+  datafile='Data/pheno.txt',
+  skiplines=1,
+  posobs=4,
+  weightFile='xx',
+  outPrefix='output/dom',
+  maxit=1000,
+  stepnum=0,
+  reparamMethod=2,
+  solveNuisance=.true.,
+  solveDom=.true.,
+  solveEpi=.false.,
+  maf=0.05,
+  nonZeroMain=.001,
+  nonZeroEpi=1d-5,
+  gammaFix=.false.,
+  lambdaFix=.false.,
+  writeFreq=.false.,
+  errorlevel=0.05
+/

@@ -1,0 +1,132 @@
+ 
+ *** time: 13:43   date: 02.02.2017
+ 
+ Read parameters from inputWG.par
+ Reading Data/pheno.txt was successful. Dimension:     1295       6
+ Reading Data/X10Met.txt was successful. Dimension:     1295    4032
+ 
+ Warning: fix weight=1
+ 
+ ... reparametrization of X and D is running ...
+ Orthogonalisation of genetic effects according to ***Alvarez-Castro & Carlborg, Genetics, 2007***
+ 
+ *** time: 13:43   date: 02.02.2017
+ 
+ Involve nuisance effects...
+ Parameters are read from nuisance.par
+ Maximum nuisance effects possible:          10
+ Factor Nr      1 is alphanumeric,     63 levels
+ Factor Nr      2 is regressor,      2 degrees
+ Degrees of freedom of fixed effects:          65
+ Total number of nuisance effects          66
+ 
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+   Welcome to fBayesB (Meuwissen et al., 2009, GSE)  
+ 
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ START with: gamma     0.00100000     0.00001000
+ hyper-parameter for gamma (a):       998.0000     99998.0000
+ Reading phenotype_corr.txt was successful. Dimension:     1295       6
+ ITERATION     1
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.04013412     0.00307988     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals   1.00000000000000     
+ ITERATION     2
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.04925596     0.00664187     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  5.366100155462301E-002
+ ITERATION     3
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05169077     0.00780037     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  1.697353863658846E-002
+ ITERATION     4
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05315042     0.00716773     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  7.025196549353156E-003
+ ITERATION     5
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05427212     0.00594325     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  4.351993578310419E-003
+ ITERATION     6
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05487748     0.00492518     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  2.053486428687894E-003
+ ITERATION     7
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05510817     0.00428565     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  7.305966932111332E-004
+ ITERATION     8
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05518214     0.00393416     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  2.150887576899916E-004
+ ITERATION     9
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05520608     0.00375333     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  5.643364962774657E-005
+ ITERATION    10
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05521471     0.00366333     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  1.387311748770959E-005
+ ITERATION    11
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05521810     0.00361928     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  3.293404976162528E-006
+ ITERATION    12
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05521947     0.00359791     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  7.676076107416164E-007
+ ITERATION    13
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05522000     0.00358759     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  1.771506146824740E-007
+ ITERATION    14
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05522019     0.00358262     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  4.065064511020686E-008
+ ITERATION    15
+ ... write vektor to output/dom.nui
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05522024     0.00358023     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  9.293549838182704E-009
+ lower and upper bound for credibility interval  -2.057469  1.098484
+ ITERATION    16
+ ... write vektor to output/dom.nui
+ 
+ *** time: 13:43   date: 02.02.2017
+ 
+         sigmaA2        sigmaD2       sigmaAA2       sigmaAD2       sigmaDA2       sigmaDD2
+      0.05522025     0.00357908     0.00000000     0.00000000     0.00000000     0.00000000
+ norm of residuals  2.118832705976651E-009
+ ... write matrix to output/dom.res
+ gHat is written to output/dom.eff
+ 
+ --- RESULTS ---->
+ Proportion of significant genetic effects:
+            additive  0.000248
+           dominance  0.000000
+ 
+ *** Genetic variance components are calculated as plug-in estimates under LE ***
+ *** More realistic Var(genetic values) should be calculated elsewhere ***
+ 
+    total genetic variance       0.058799
+         residual variance       0.800385
+ 
+ Finished: ice algorithm converged within          16 steps.
+ 
+ *** time: 13:43   date: 02.02.2017
+ 
