@@ -1,0 +1,21 @@
+&input
+  snpfile='../Data/X10Met.txt',
+  datafile='../Data/pheno.txt',
+  skiplines=1,
+  posobs=4,
+  weightFile='',
+  outPrefix='../output/DummyOut',
+  maxit=1000,
+  stepnum=0,
+  reparamMethod=2,
+  solveNuisance=.true.,
+  solveDom=.false.,
+  solveEpi=.false.,
+  maf=0.05,
+  nonZeroMain=DummyGamma,
+  nonZeroEpi=DummyEpiGamma,
+  gammaFix=.false.,
+  lambdaFix=.false.,
+  writeFreq=.false.,
+  errorlevel=0.05
+/

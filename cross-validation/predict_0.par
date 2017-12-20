@@ -1,0 +1,16 @@
+&input
+  genofile="../Data/XTest.txt",
+  effectfile="../output/DummyOut.eff",
+  colgebv=3,
+  skiplines=1,
+  solveDom=.false.,
+  solveEpi=.false.,
+  simfile="none.txt",
+  tbvfile="../Data/yTest.txt",
+  outfile="../output/gebv_DummyOut.txt",
+  plotfile="none.R",
+  plot=.false.,
+  reparamMethod=2,
+  standardise=.true.,
+  maf=0.01
+/
