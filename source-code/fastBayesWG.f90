@@ -161,6 +161,7 @@ contains
 
           !update SNP effect
           gtemp(j)=updateSNP(bigY,lambda,gamma,sigma2)
+          if(last==1)  BF(j)=bayesfactor(z,n,ycorr,gtemp(j),sigmaE2)
           ycorr=ycorr-z(:)*gtemp(j)
 
           !posterior expectation of gamma based on single locus model
@@ -175,8 +176,7 @@ contains
               end if
               ! measure of evidence (Pereira & Stern, 1999), but assuming symmetric density p(g|y)
               moe(j)=measureOfEvidence(0d0,gtemp(j),bigY,lambda,gamma,sigma2,lower,upper)
-              if(moe(j)<=1-alphaU+alphaL) sign(j)=1
-              BF(j)=bayesfactor(z,n,ycorr,gtemp(j),sigmaE2)
+              if(moe(j)<=1-alphaU+alphaL) sign(j)=1 
            end if
 
        end do add_et_dom
@@ -233,6 +233,7 @@ contains
 
                 !update SNP effect
                 gtemp(counter)=updateSNP(bigY,lambda,gamma,sigma2)
+                if(last==1)  BF(counter)=bayesfactor(z,n,ycorr,gtemp(counter),sigmaE2)
                 ycorr=ycorr-z(:)*gtemp(counter)
 
                 if(.not.GammaFix) gammaProposal(counter)=singleGammaEst(bigY,lambda,sigma2,aEpi)
@@ -245,7 +246,6 @@ contains
                    end if
                    moe(counter)=measureOfEvidence(0d0,gtemp(counter),bigY,lambda,gamma,sigma2,lower,upper)
                    if(moe(counter)<=1-alphaU+alphaL) sign(counter)=1
-                   BF(j)=bayesfactor(z,n,ycorr,gtemp(counter),sigmaE2)
                 end if
 
              end do
