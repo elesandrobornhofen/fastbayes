@@ -13,6 +13,7 @@ module fastBayesWeight
 !   18/11/13 wittenburg; include credibility interval for testing genetic effects -> Bayes factor deleted: no useful results
 !   21/01/14 wittenburg; weight=0 -> exclude SNP
 !   07/05/14 wittenburg; estimate gamma; delete gPostVar (its not validated so far)
+!   26/01/18 wittenburg; calculation of bayesfactor 
 !
   use kindnumber
   use sharedTypes
@@ -42,7 +43,7 @@ contains
     real(rk8),intent(in) :: y(n),X(n,p),D(n,p),desNuis(n,q)&
          &,genefreq(p),weight(p)
     real(rk8),allocatable :: gtemp(:),diff(:),ycorr(:),Wb(:)&
-         &,g(:),z(:),solution(:,:),t(:,:),gammaProposal(:),moe(:)
+         &,g(:),z(:),solution(:,:),t(:,:),gammaProposal(:),moe(:),BF(:)
     real(rk8) :: lambda,gamma,sigma2,bigY,alphaL,alphaU&
          &,hetero(p),euklid,sigmaG2,sigmaD2,sigmaEpi2(1:4)&
          &,div,mu,sigmaE2,varcomp(6),precision=1d-8&
@@ -69,10 +70,10 @@ contains
     if(.not.solveEpi) col=dim
 
     allocate(g(col),gtemp(col),diff(col),ycorr(n),z(n),t(col,2),&
-         &sign(col),gammaProposal(col),moe(col))
+         &sign(col),gammaProposal(col),moe(col),BF(col))
 
     !starting values
-    g=0.; sign=0; t(:,1)=-999.; t(:,2)=999.; moe=1.
+    g=0.; sign=0; t(:,1)=-999.; t(:,2)=999.; moe=1.; BF=1.
     gtemp=0.; g=gtemp
     ycorr=y
 
@@ -175,6 +176,7 @@ contains
               ! measure of evidence (Pereira & Stern, 1999), but assuming symmetric density p(g|y)
               moe(j)=measureOfEvidence(0d0,gtemp(j),bigY,lambda,gamma,sigma2,lower,upper)
               if(moe(j)<=1-alphaU+alphaL) sign(j)=1
+              BF(j)=bayesfactor(z,n,ycorr,gtemp(j),sigmaE2)
            end if
 
        end do add_et_dom
@@ -243,6 +245,7 @@ contains
                    end if
                    moe(counter)=measureOfEvidence(0d0,gtemp(counter),bigY,lambda,gamma,sigma2,lower,upper)
                    if(moe(counter)<=1-alphaU+alphaL) sign(counter)=1
+                   BF(j)=bayesfactor(z,n,ycorr,gtemp(counter),sigmaE2)
                 end if
 
              end do
@@ -302,12 +305,13 @@ contains
     open(unit=3,file=outfile,status='replace',action='write',iostat&
          &=status)
     file_io: if(status==0) then
-       write(3,'(1X,8A12)') 'loc_1','loc_2','gPostExp','gamma','measOfEvid','sign','cred_t1','cred_t2'
+       write(3,'(1X,9A12)') 'loc_1','loc_2','gPostExp','gamma','measOfEvid','sign',&
+            &'cred_t1','cred_t2','bayesfactor'
        write_main: do j=1,dim
-          write(3,1011) j,j,g(j),gammaproposal(j),moe(j),sign(j),t(j,1),t(j,2)
+          write(3,1011) j,j,g(j),gammaproposal(j),moe(j),sign(j),t(j,1),t(j,2),BF(j)
        end do write_main
 
-1011   format(1X,2I10,3F18.10,1x,I2,1x,2F18.10)
+1011   format(1X,2I10,3F18.10,1x,I2,1x,3F18.10)
 
        epi_out: if(solveEpi) then
        	  write(*,1013) 'Estimates of epistatic effects being greater than ',&
@@ -320,7 +324,7 @@ contains
                 counter=counter+1
                 if(abs(g(counter))>threshold) write(3,1011) k,l,g(counter)&
                      &,gammaproposal(counter),moe(counter),sign(counter)&
-                     &,t(counter,1),t(counter,2)
+                     &,t(counter,1),t(counter,2),BF(counter)
              end do
           end do
        end if epi_out
@@ -377,7 +381,7 @@ contains
     end if finish
 
 
-    deallocate(g,gtemp,ycorr,diff,z,solution,t,sign,gammaProposal,moe)
+    deallocate(g,gtemp,ycorr,diff,z,solution,t,sign,gammaProposal,moe,BF)
     if(solveNuisance) then
        deallocate(Wb)
        call deleteOld(corrfile)
@@ -697,6 +701,21 @@ contains
     end function density
 
   end function measureOfEvidence
+
+ 
+  function bayesfactor(z,n,ycorr,effect,sigmaE2)
+!!! calculate the bayes factor for a single effect at a time
+    
+    integer(ik4),intent(in) :: n
+    real(rk8),intent(in) :: z(n),ycorr(n),sigmaE2,effect
+    real(rk8) :: bayesfactor,ytemp(n),gtemp(n)
+
+    gtemp=z(:)*effect
+    ytemp=ycorr+gtemp
+    bayesfactor=exp((2*dot_product(ytemp,gtemp)-dot_product(gtemp,gtemp))/2/sigmaE2)
+    if(bayesfactor>1d+6) bayesfactor=99999
+
+  end function bayesfactor
 
 
 end module fastBayesWeight
