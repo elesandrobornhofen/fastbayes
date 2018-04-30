@@ -13,7 +13,7 @@ module fastBayesWeight
 !   18/11/13 wittenburg; include credibility interval for testing genetic effects -> Bayes factor deleted: no useful results
 !   21/01/14 wittenburg; weight=0 -> exclude SNP
 !   07/05/14 wittenburg; estimate gamma; delete gPostVar (its not validated so far)
-!   26/01/18 wittenburg; calculation of bayesfactor 
+!   26/01/18 wittenburg; calculation of bayesfactor; validated
 !
   use kindnumber
   use sharedTypes
